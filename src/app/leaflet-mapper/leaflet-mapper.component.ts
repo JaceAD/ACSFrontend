@@ -17,23 +17,22 @@ export class LeafletMapperComponent implements OnInit {
   //private dataset: QueryResponse[];
   private dataset: GeneralQueryResponse[];
 
+  private dataLoaded: boolean = false;
+  //private dataset: any;
   constructor(private dataSource: QueryDataSourceService) {
-    this.dataSource.retrieveQuery().subscribe(dataset => { this.dataset = dataset });
-    this.printData();
+    this.getData();
   }
 
   ngOnInit() {
   }
 
-  printData() {
-    /*
-    this.dataset.forEach((entry) => {
-      console.log("data");
-      entry.data.forEach((field) => {
-        console.log(field);
-      })
+  private getData() {
+    this.dataLoaded = false
+    this.dataSource.retrieveQuery().subscribe((dataset) => { this.dataset = dataset }, (error) => { console.log(error) }, () => { this.dataLoaded = true });
+  }
 
-    })*/
+  printData() {
+    console.log("printing dataset");
     console.log(this.dataset);
   }
 

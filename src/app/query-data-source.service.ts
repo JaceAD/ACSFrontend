@@ -16,14 +16,14 @@ const options = {
 })
 export class QueryDataSourceService {
 
-  private url: string = "http://localhost:9600/location/countySubdivision:*,state:55/year/2018/variables/NAME,B10057_004E";
+  private url: string = "http://localhost:9600/location/countySubdivision:*,state:55/year/2018/variables/NAME,B10057_004E,B10057_005E";
 
 
   constructor(private http: HttpClient) {
 
   }
 
-  retrieveQuery(): Observable<GeneralQueryResponse[]> {
+  retrieveQuery(): Observable<any> {
 
     //return this.http.get<QueryResponse[]>(this.url, options);
     return this.http.get<GeneralQueryResponse[]>(this.url, options);

@@ -1,17 +1,15 @@
-<div class='container'>
-    <div class='row'>
+<div class='container-fluid'>
+    <div class='row' *ngIf="dataLoaded">
         <div class='col-md-8 offset-md-2'>
-            <table class='table table-striped' *ngIf="firstData">
+            <table class='table table-striped border border-secondary'>
                 <thead>
                     <tr>
-                        <th *ngFor="let entries of dataset[0] | keyvalue">{{data.key}}</th>
-
+                        <th *ngFor="let entry of dataset[0].data | keyvalue">{{entry.key}}</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of data">
-                        <td>{{item.data.get(county)}}</td>
-                        <td>{{item.data.get(state)}}</td>
+                    <tr *ngFor="let data of dataset">
+                        <td *ngFor="let entry of data.data | keyvalue">{{entry.value}}</td>
                     </tr>
                 </tbody>
             </table>
